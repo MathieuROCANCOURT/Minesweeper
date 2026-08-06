@@ -32,7 +32,7 @@ public class Grid {
 					if (Bumb.isBumb(bombs, indexRow, indexColumn)) {
 						System.out.print('B');
 					} else {
-						System.out.print(nbBumbAround(bombs, indexRow, indexColumn));
+						System.out.print(Bumb.nbBumbAround(bombs, indexRow, indexColumn));
 					}
 					break;
 				case POTENTIAL_BOMB:
@@ -43,18 +43,5 @@ public class Grid {
 			}
 			System.out.println();
 		}
-	}
-
-	private int nbBumbAround(int[][] bombs, int row, int column) {
-		int countBumb = 0;
-		
-		for (int indexRow = row - 1; indexRow <= row + 1; indexRow++) {
-			for (int indexColumn = column - 1; indexColumn <= column + 1; indexColumn++) {
-				if (Bumb.isBumb(bombs, indexRow, indexColumn)) {
-					countBumb++;
-				}
-			}
-		}
-		return countBumb;
 	}
 }

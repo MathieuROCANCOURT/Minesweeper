@@ -27,4 +27,17 @@ public class Bumb {
 		}
 		return false;
 	}
+
+	public static int nbBumbAround(int[][] bombs, int row, int column) {
+		int countBumb = 0;
+		
+		for (int indexRow = row - 1; indexRow <= row + 1; indexRow++) {
+			for (int indexColumn = column - 1; indexColumn <= column + 1; indexColumn++) {
+				if (Bumb.isBumb(bombs, indexRow, indexColumn)) {
+					countBumb++;
+				}
+			}
+		}
+		return countBumb;
+	}
 }
