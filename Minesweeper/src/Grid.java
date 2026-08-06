@@ -22,7 +22,7 @@ public class Grid {
 		System.out.print("  ");
 		for (int indexColumn = 0; indexColumn < grid[0].length; indexColumn++) {
 			System.out.print(" ");
-			System.out.printf("%2d", indexColumn);
+			System.out.printf("%2s", indexColumn + 1);
 		}
 		System.out.println();
 
@@ -30,7 +30,7 @@ public class Grid {
 		for (int indexRow = 0; indexRow < grid.length; indexRow++) {
 			System.out.printf("%2d", nbLine);
 			nbLine++;
-			
+
 			for (int indexColumn = 0; indexColumn < grid[0].length; indexColumn++) {
 				System.out.print("|");
 
@@ -40,9 +40,9 @@ public class Grid {
 					break;
 				case SELECT:
 					if (Bumb.isBumb(bombs, indexRow, indexColumn)) {
-						System.out.printf("2%s", 'B');
+						System.out.printf("%2s", "B");
 					} else {
-						System.out.printf("2%s", Bumb.nbBumbAround(bombs, indexRow, indexColumn));
+						System.out.printf("%2d", Bumb.nbBumbAround(bombs, indexRow, indexColumn));
 					}
 					break;
 				case POTENTIAL_BOMB:
@@ -54,17 +54,19 @@ public class Grid {
 		}
 	}
 
-	public void displaySolution(StateCase[][] grid, int[][] bombs) {
+	public static void displaySolution(StateCase[][] grid, int[][] bombs) {
 		System.out.println("Voici la soluation de la grille:");
-		Arrays.fill(grid, StateCase.SELECT);
+		for (StateCase[] rowGrid : grid) {
+			Arrays.fill(rowGrid, StateCase.SELECT);
+		}
 		displayGrid(grid, bombs);
 	}
 
-	public StateCase[][] changeState(StateCase[][] grid, int[] coord, boolean reveal) {
+	public static StateCase[][] changeState(StateCase[][] grid, int[] coord, boolean reveal) {
 		if (reveal) {
-			grid[coord[0]][coord[1]] = StateCase.SELECT;
+			grid[coord[0] - 1][coord[1] - 1] = StateCase.SELECT;
 		} else {
-			grid[coord[0]][coord[1]] = StateCase.POTENTIAL_BOMB;
+			grid[coord[0] - 1][coord[1] - 1] = StateCase.POTENTIAL_BOMB;
 		}
 
 		return grid;
