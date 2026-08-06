@@ -34,12 +34,13 @@ public class ControlUser {
 			return false;
 		}
 
-		return 0 <= index && index < nbRowOrColumn;
+		return 0 < index && index <= nbRowOrColumn;
 	}
 
 	public static boolean revealBox(Scanner sc) {
 		int option = 0;
 		String optionUser;
+		boolean checkInput = false;
 
 		do {
 			System.out.println("Avec cette case, voulez-vous:\n" + "[1] Révélez la case.\n"
@@ -53,8 +54,10 @@ public class ControlUser {
 
 			if (option <= 0 || option > 2) {
 				System.err.println("Votre saisie n'est pas un 1 ou 2.");
+			} else {
+				checkInput = true;
 			}
-		} while (option > 0 && option <= 2);
+		} while (!checkInput);
 
 		return option == 1;
 	}
