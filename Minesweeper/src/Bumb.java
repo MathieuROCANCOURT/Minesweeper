@@ -18,4 +18,13 @@ public class Bumb {
 		
 		return listOfBumb;
 	}
+
+	public static boolean isBumb(int[][] bombs, int row, int column) {
+		for (int[] bomb: bombs) {
+			if (bomb[0] == row && bomb[1] == column) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
