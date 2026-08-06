@@ -50,4 +50,14 @@ public class Grid {
 		Arrays.fill(grid, StateCase.SELECT);
 		displayGrid(grid, bombs);
 	}
+	
+	public StateCase[][] changeState(StateCase[][] grid, int[] coord, boolean reveal) {
+		if (reveal) {
+			grid[coord[0]][coord[1]] = StateCase.SELECT;
+		} else {
+			grid[coord[0]][coord[1]] = StateCase.POTENTIAL_BOMB;
+		}
+		
+		return grid;
+	}
 }
