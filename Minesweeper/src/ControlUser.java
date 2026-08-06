@@ -25,6 +25,15 @@ public class ControlUser {
 	}
 
 	private static boolean correctSelect(String indexSelect, int nbRowOrColumn) {
-		return 0 <= Integer.parseInt(indexSelect) && Integer.parseInt(indexSelect) < nbRowOrColumn;
+		int index;
+		
+		try {
+			index = Integer.parseInt(indexSelect);
+		} catch (Exception e) {
+			System.err.println("Vouc n'avez pas saisie un nombre.");
+			return false;
+		}
+		
+		return 0 <= index && index < nbRowOrColumn;
 	}
 }
