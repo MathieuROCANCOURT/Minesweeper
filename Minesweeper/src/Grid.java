@@ -29,10 +29,10 @@ public class Grid {
 					System.out.print(" ");
 					break;
 				case SELECT:
-					if (isBomb(bombs, indexRow, indexColumn)) {
+					if (isBumb(bombs, indexRow, indexColumn)) {
 						System.out.print('B');
 					} else {
-						System.out.print(nbBombAround(bombs, indexRow, indexColumn));
+						System.out.print(nbBumbAround(bombs, indexRow, indexColumn));
 					}
 					break;
 				case POTENTIAL_BOMB:
@@ -45,7 +45,7 @@ public class Grid {
 		}
 	}
 
-	private boolean isBomb(int[][] bombs, int row, int column) {
+	private boolean isBumb(int[][] bombs, int row, int column) {
 		for (int[] bomb: bombs) {
 			if (bomb[0] == row && bomb[1] == column) {
 				return true;
@@ -54,12 +54,12 @@ public class Grid {
 		return false;
 	}
 
-	private int nbBombAround(int[][] bombs, int row, int column) {
+	private int nbBumbAround(int[][] bombs, int row, int column) {
 		int countBumb = 0;
 		
 		for (int indexRow = row - 1; indexRow <= row + 1; indexRow++) {
 			for (int indexColumn = column - 1; indexColumn <= column + 1; indexColumn++) {
-				if (isBomb(bombs, indexRow, indexColumn)) {
+				if (isBumb(bombs, indexRow, indexColumn)) {
 					countBumb++;
 				}
 			}
