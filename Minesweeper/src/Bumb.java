@@ -15,6 +15,8 @@ public class Bumb {
 				bumbCoordinate[0] = random.nextInt(nbRows);
 				bumbCoordinate[1] = random.nextInt(nbColumns);
 			} while (isBumb(listOfBumb, bumbCoordinate[0], bumbCoordinate[1]));
+			
+			listOfBumb[nbBumbCreate] = bumbCoordinate;
 		}
 		
 		return listOfBumb;
