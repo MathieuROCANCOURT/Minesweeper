@@ -1,10 +1,6 @@
 /**
  * 
  */
-
-/**
- * 
- */
 public enum StateCase {
 	NO_SELECT,
 	SELECT,
