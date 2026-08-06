@@ -44,4 +44,10 @@ public class Grid {
 			System.out.println();
 		}
 	}
+	
+	public void displaySolution(StateCase[][] grid, int[][] bombs) {
+		System.out.println("Voici la soluation de la grille:");
+		Arrays.fill(grid, StateCase.SELECT);
+		displayGrid(grid, bombs);
+	}
 }
