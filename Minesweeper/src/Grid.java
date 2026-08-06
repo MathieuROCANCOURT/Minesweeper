@@ -20,6 +20,12 @@ public class Grid {
 
 	public static void displayGrid(StateCase[][] grid, int[][] bombs) {
 		int nbLine = 1;
+		System.out.print("  ");
+		for (int indexColumn = 0; indexColumn < grid[0].length; indexColumn++) {
+			System.out.print(" " + (indexColumn + 1));
+		}
+		System.out.println();
+		
 		for (int indexRow = 0; indexRow < grid.length; indexRow++) {
 			System.out.print(nbLine + " ");
 			nbLine++;
