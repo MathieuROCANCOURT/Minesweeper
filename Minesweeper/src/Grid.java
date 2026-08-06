@@ -9,21 +9,23 @@ import java.util.Arrays;
  * 
  */
 public class Grid {
-	public StateCase[][] initGrid(int nbRow, int nbColumn) {
+	public static StateCase[][] initGrid(int nbRow, int nbColumn) {
 		StateCase[][] grid = new StateCase[nbRow][nbColumn];
-		Arrays.fill(grid, StateCase.NO_SELECT);
+		for (StateCase[] rowGrid : grid) {
+			Arrays.fill(rowGrid, StateCase.NO_SELECT);
+		}
 
 		return grid;
 	}
 
-	public void displayGrid(StateCase[][] grid, int[][] bombs) {
+	public static void displayGrid(StateCase[][] grid, int[][] bombs) {
 		int nbLine = 1;
 		for (int indexRow = 0; indexRow < grid.length; indexRow++) {
 			System.out.print(nbLine + " ");
 			nbLine++;
-			for (int indexColumn = 0; indexRow < grid[0].length; indexColumn++) {
+			for (int indexColumn = 0; indexColumn < grid[0].length; indexColumn++) {
 				System.out.print("|");
-				
+
 				switch (grid[indexRow][indexColumn]) {
 				case NO_SELECT:
 					System.out.print(" ");
@@ -38,26 +40,25 @@ public class Grid {
 				case POTENTIAL_BOMB:
 					System.out.print("!");
 				}
-				
-				System.out.print("|");
+
 			}
-			System.out.println();
+			System.out.println("|");
 		}
 	}
-	
+
 	public void displaySolution(StateCase[][] grid, int[][] bombs) {
 		System.out.println("Voici la soluation de la grille:");
 		Arrays.fill(grid, StateCase.SELECT);
 		displayGrid(grid, bombs);
 	}
-	
+
 	public StateCase[][] changeState(StateCase[][] grid, int[] coord, boolean reveal) {
 		if (reveal) {
 			grid[coord[0]][coord[1]] = StateCase.SELECT;
 		} else {
 			grid[coord[0]][coord[1]] = StateCase.POTENTIAL_BOMB;
 		}
-		
+
 		return grid;
 	}
 }
