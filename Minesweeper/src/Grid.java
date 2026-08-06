@@ -19,32 +19,34 @@ public class Grid {
 	}
 
 	public static void displayGrid(StateCase[][] grid, int[][] bombs) {
-		int nbLine = 1;
 		System.out.print("  ");
 		for (int indexColumn = 0; indexColumn < grid[0].length; indexColumn++) {
-			System.out.print(" " + (indexColumn + 1));
+			System.out.print(" ");
+			System.out.printf("%2d", indexColumn);
 		}
 		System.out.println();
-		
+
+		int nbLine = 1;
 		for (int indexRow = 0; indexRow < grid.length; indexRow++) {
-			System.out.print(nbLine + " ");
+			System.out.printf("%2d", nbLine);
 			nbLine++;
+			
 			for (int indexColumn = 0; indexColumn < grid[0].length; indexColumn++) {
 				System.out.print("|");
 
 				switch (grid[indexRow][indexColumn]) {
 				case NO_SELECT:
-					System.out.print(" ");
+					System.out.printf("%2s", " ");
 					break;
 				case SELECT:
 					if (Bumb.isBumb(bombs, indexRow, indexColumn)) {
-						System.out.print('B');
+						System.out.printf("2%s", 'B');
 					} else {
-						System.out.print(Bumb.nbBumbAround(bombs, indexRow, indexColumn));
+						System.out.printf("2%s", Bumb.nbBumbAround(bombs, indexRow, indexColumn));
 					}
 					break;
 				case POTENTIAL_BOMB:
-					System.out.print("!");
+					System.out.printf("2%s", "!");
 				}
 
 			}
