@@ -20,16 +20,24 @@ public class Minesweeper {
 
 		Scanner sc = new Scanner(System.in);
 		int[] coordsUser;
+		int nbBoxReveal = 0;
 		boolean continueGame = true;
 		boolean loseGame = true;
+		
 		while (continueGame) {
 			coordsUser = ControlUser.addCoordinate(sc, GRID_ROW, GRID_COLUMN);
 
-			grid = Grid.changeState(grid, coordsUser, ControlUser.revealBox(sc));
+			boolean reveal = ControlUser.revealBox(sc);
+			grid = Grid.changeState(grid, coordsUser, reveal);
 
-			if (Bumb.isBumb(bumbsCoord, coordsUser[0], coordsUser[1])
-					&& grid[coordsUser[0]][coordsUser[1]] == StateCase.SELECT) {
+			if (Bumb.isBumb(bumbsCoord, coordsUser[0], coordsUser[1]) && reveal) {
 				continueGame = false;
+			} else if (reveal) {
+				++nbBoxReveal;
+				if (GRID_ROW * GRID_COLUMN == nbBoxReveal + NB_BUMB) {
+					continueGame = false;
+					loseGame = false;
+				}
 			}
 
 			Grid.displayGrid(grid, bumbsCoord);
