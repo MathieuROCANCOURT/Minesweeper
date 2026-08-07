@@ -23,21 +23,25 @@ public class Minesweeper {
 		int nbBoxReveal = 0;
 		boolean continueGame = true;
 		boolean loseGame = true;
-		
+
 		while (continueGame) {
 			coordsUser = ControlUser.addCoordinate(sc, GRID_ROW, GRID_COLUMN);
 
-			boolean reveal = ControlUser.revealBox(sc);
-			grid = Grid.changeState(grid, coordsUser, reveal);
+			if (grid[coordsUser[0]][coordsUser[1]] != StateCase.SELECT) {
+				boolean reveal = ControlUser.revealBox(sc);
+				grid = Grid.changeState(grid, coordsUser, reveal);
 
-			if (Bumb.isBumb(bumbsCoord, coordsUser[0], coordsUser[1]) && reveal) {
-				continueGame = false;
-			} else if (reveal) {
-				++nbBoxReveal;
-				if (GRID_ROW * GRID_COLUMN == nbBoxReveal + NB_BUMB) {
+				if (Bumb.isBumb(bumbsCoord, coordsUser[0], coordsUser[1]) && reveal) {
 					continueGame = false;
-					loseGame = false;
+				} else if (reveal) {
+					++nbBoxReveal;
+					if (GRID_ROW * GRID_COLUMN == nbBoxReveal + NB_BUMB) {
+						continueGame = false;
+						loseGame = false;
+					}
 				}
+			} else {
+				System.out.println("La case que vous avez choisie est déjà révélée.");
 			}
 
 			Grid.displayGrid(grid, bumbsCoord);
