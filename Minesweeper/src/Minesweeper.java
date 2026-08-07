@@ -34,6 +34,7 @@ public class Minesweeper {
 				if (Bumb.isBumb(bumbsCoord, coordsUser[0], coordsUser[1]) && reveal) {
 					continueGame = false;
 				} else if (reveal) {
+					grid = Grid.reveal0Bumb(grid, bumbsCoord, coordsUser);
 					++nbBoxReveal;
 					if (GRID_ROW * GRID_COLUMN == nbBoxReveal + NB_BUMB) {
 						continueGame = false;
