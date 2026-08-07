@@ -46,7 +46,7 @@ public class Grid {
 					}
 					break;
 				case POTENTIAL_BOMB:
-					System.out.printf("2%s", "!");
+					System.out.printf("%2s", "!");
 				}
 
 			}
