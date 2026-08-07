@@ -47,7 +47,7 @@ public class Grid {
 					}
 					break;
 				case POTENTIAL_BOMB:
-					System.out.printf("%2s", "!");
+					System.out.printf("%2s", "µ");
 				}
 
 			}
@@ -127,7 +127,6 @@ public class Grid {
 
 		for (int index : coordProp) {
 			int[] coordReveal = coordAround[index];
-			System.out.println(coordReveal[0] + ", " + coordReveal[1]);
 			
 			if (grid[coordReveal[0]][coordReveal[1]] != StateCase.SELECT) {
 				grid[coordReveal[0]][coordReveal[1]] = StateCase.SELECT;
@@ -138,5 +137,17 @@ public class Grid {
 		}
 
 		return grid;
+	}
+
+	public static boolean isEndGame(StateCase[][] grid, int[][] bumbsCoord) {
+		for (int indexRow = 0; indexRow < grid.length; indexRow++) {
+			for (int indexColumn = 0; indexColumn < grid[0].length; indexColumn++) {
+				if (grid[indexRow][indexColumn] != StateCase.SELECT && !Bumb.isBumb(bumbsCoord, indexRow, indexColumn)) {
+					return false;
+				}
+			}
+		}
+
+		return true;
 	}
 }
