@@ -77,7 +77,7 @@ public class Grid {
 		if (Bumb.nbBumbAround(bumbs, coord[0], coord[1]) != 0) {
 			return Grid.changeState(grid, coord, true);
 		}
-		
+
 		ArrayList<Integer> coordProp = new ArrayList<>();
 		int[][] coordAround = new int[][] { { coord[0] - 1, coord[1] - 1 }, // 0:Up left
 				{ coord[0] - 1, coord[1] }, // 1:Up
@@ -101,7 +101,7 @@ public class Grid {
 			coordProp.remove((Integer) 0);
 			coordProp.remove((Integer) 1);
 			coordProp.remove((Integer) 2);
-		} else if (coord[0] == grid[0].length - 1) {
+		} else if (coord[0] == grid.length - 1) {
 			coordProp.remove((Integer) 4);
 			coordProp.remove((Integer) 5);
 			coordProp.remove((Integer) 6);
@@ -115,7 +115,7 @@ public class Grid {
 			if (coordProp.contains(6)) {
 				coordProp.remove((Integer) 6);
 			}
-		} else if (coord[1] == grid.length - 1) {
+		} else if (coord[1] == grid[0].length - 1) {
 			if (coordProp.contains(2)) {
 				coordProp.remove((Integer) 2);
 			}
@@ -128,6 +128,7 @@ public class Grid {
 		for (int index : coordProp) {
 			int[] coordReveal = coordAround[index];
 			System.out.println(coordReveal[0] + ", " + coordReveal[1]);
+			
 			if (grid[coordReveal[0]][coordReveal[1]] != StateCase.SELECT) {
 				grid[coordReveal[0]][coordReveal[1]] = StateCase.SELECT;
 				if (Bumb.nbBumbAround(bumbs, coordReveal[0], coordReveal[1]) == 0) {
