@@ -27,8 +27,8 @@ public class Minesweeper {
 
 			grid = Grid.changeState(grid, coordsUser, ControlUser.revealBox(sc));
 
-			if (Bumb.isBumb(bumbsCoord, coordsUser[0] - 1, coordsUser[1] - 1)
-					&& grid[coordsUser[0] - 1][coordsUser[1] - 1] == StateCase.SELECT) {
+			if (Bumb.isBumb(bumbsCoord, coordsUser[0], coordsUser[1])
+					&& grid[coordsUser[0]][coordsUser[1]] == StateCase.SELECT) {
 				continueGame = false;
 			}
 

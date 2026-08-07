@@ -64,9 +64,9 @@ public class Grid {
 
 	public static StateCase[][] changeState(StateCase[][] grid, int[] coord, boolean reveal) {
 		if (reveal) {
-			grid[coord[0] - 1][coord[1] - 1] = StateCase.SELECT;
+			grid[coord[0]][coord[1]] = StateCase.SELECT;
 		} else {
-			grid[coord[0] - 1][coord[1] - 1] = StateCase.POTENTIAL_BOMB;
+			grid[coord[0]][coord[1]] = StateCase.POTENTIAL_BOMB;
 		}
 
 		return grid;

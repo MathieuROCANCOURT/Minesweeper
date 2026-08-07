@@ -21,7 +21,7 @@ public class ControlUser {
 			selectColumn = sc.nextLine();
 		}
 
-		return new int[] { Integer.parseInt(selectRow), Integer.parseInt(selectColumn) };
+		return new int[] { Integer.parseInt(selectRow) - 1, Integer.parseInt(selectColumn) - 1 };
 	}
 
 	private static boolean correctSelect(String indexSelect, int nbRowOrColumn) {
